@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 
 /**
  * @author Krystal
- * @Date 2021/2/22  15:57
+ * @Date 2021/2/22 15:57
  */
 @RestController
 @RequestMapping("/user")
@@ -31,16 +31,9 @@ public class AddUserController {
         return databaseClient.sql(SELECT_FROM_USER).map(this::buildUser).all();
     }
 
-
-
-
     private UserDto buildUser(Row row) {
-        return UserDto.builder()
-                .nickName(row.get("nickName", String.class))
-                .role(row.get("role", String.class))
-                .mobile(row.get("mobiel", String.class))
-                .build();
+        return UserDto.builder().nickName(row.get("nickName", String.class)).role(row.get("role", String.class))
+            .mobile(row.get("mobiel", String.class)).build();
     }
-
 
 }
