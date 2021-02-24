@@ -6,7 +6,7 @@ import io.r2dbc.spi.ConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.time.ZoneId;
+import static java.time.ZoneId.systemDefault;
 
 /**
  * @author Krystal
@@ -21,7 +21,7 @@ public class DataConfig {
                 .port(3306)
                 .user("root")
                 .password("root")
-                .serverZoneId(ZoneId.systemDefault())
+                .serverZoneId(systemDefault())
                 .database("krystal_demo")
                 .build());
     }
