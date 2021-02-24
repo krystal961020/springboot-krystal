@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import javax.annotation.Resource;
 
@@ -33,10 +32,7 @@ public class AddUserController {
     }
 
 
-    public Mono<Integer> insertUser() {
 
-        return Mono.just(1);
-    }
 
     private UserDto buildUser(Row row) {
         return UserDto.builder()
