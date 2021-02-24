@@ -13,8 +13,10 @@ import io.r2dbc.spi.Row;
 import reactor.core.publisher.Flux;
 
 /**
+ * The type Add user controller.
+ *
  * @author Krystal
- * @Date 2021/2/22 15:57
+ * @Date 2021 /2/22 15:57
  */
 @RestController
 @RequestMapping("/user")
@@ -24,16 +26,23 @@ public class AddUserController {
     private DatabaseClient databaseClient;
 
     /**
-     * 查询所有用户
+     * Client web flux flux.
      *
-     * @return UserDto
+     * @return the flux
      */
     @GetMapping("/allUser")
     public Flux<UserDto> clientWebFlux() {
         return databaseClient.sql(SELECT_FROM_USER).map(this::buildUser).all();
     }
 
-    private UserDto buildUser(Row row) {
+    /**
+     * Build user user dto.
+     *
+     * @param row
+     *            the row
+     * @return the user dto
+     */
+    public UserDto buildUser(Row row) {
         return UserDto.builder().nickName(row.get("nickName", String.class)).role(row.get("role", String.class))
             .mobile(row.get("mobiel", String.class)).build();
     }
